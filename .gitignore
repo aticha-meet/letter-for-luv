@@ -43,3 +43,15 @@ Thumbs.db
 .nx/migrate-runs
 .claude/worktrees
 .claude/settings.local.json
+
+# Next.js
+.next
+out
+
+test-output
+
+#ENV
+.env
+.env.local
+.env.*
+.env.local.*

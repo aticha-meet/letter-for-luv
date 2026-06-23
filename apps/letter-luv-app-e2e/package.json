@@ -1,0 +1,10 @@
+{
+  "name": "@letter-luv-web/letter-luv-app-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@letter-luv-web/letter-luv-app"
+    ]
+  }
+}

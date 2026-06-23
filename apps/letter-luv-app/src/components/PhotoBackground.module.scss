@@ -1,0 +1,31 @@
+/* แถวขวาไปซ้าย */
+.marqueeRtl {
+    // แนะนำว่าอย่าให้เวลาสั้นเกินไปครับ ยิ่งสั้นภาพจะวิ่งเร็วและกระตุกตาสั่น ปรับสัก 20s-30s กำลังหวานพาสเทล
+    animation: scrollRTL 30s linear infinite !important;
+}
+
+@keyframes scrollRTL {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* เลื่อนไปซ้ายตรง ๆ ครึ่งหนึ่งของแถว (จบเซ็ตแรกพอดี) และลบ gap ออกครึ่งหนึ่ง */
+        transform: translateX(calc(-50% - 0.5rem));
+    }
+}
+
+/* แถวซ้ายไปขวา */
+.marqueeLtr {
+    animation: scrollLTR 30s linear infinite !important;
+}
+
+@keyframes scrollLTR {
+    0% {
+        transform: translateX(calc(-50% - 0.5rem));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
