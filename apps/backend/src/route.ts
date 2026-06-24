@@ -1,10 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 import { Router, Request, Response } from "express";
+import { UploadsRouter } from "./uploads/route";
+import { ShowImageRouter } from "./show-image/route";
 
 const prisma = new PrismaClient();
 const AppRouter: Router = Router();
 
-AppRouter.post('/users', async (req: Request, res: Response) => {
+AppRouter.post('/test-prisma', async (req: Request, res: Response) => {
     try {
         const userList = await prisma.user.findMany()
         return res.status(200).json({ userList })
@@ -21,5 +23,8 @@ AppRouter.post('/test', async (req: Request, res: Response) => {
         return res.status(400).json({ message: "Error" })
     }
 })
+
+AppRouter.use(UploadsRouter)
+AppRouter.use('/show-image', ShowImageRouter)
 
 export default AppRouter
