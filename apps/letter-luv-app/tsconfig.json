@@ -19,11 +19,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@lib/*":["../../lib/*"]
     },
     "types": ["jest", "node"],
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDirs": ["src","../../lib"],
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": [
@@ -33,7 +34,9 @@
     "src/**/*.jsx",
     "../../apps/letter-luv-app/.next/types/**/*.ts",
     "../../dist/apps/letter-luv-app/.next/types/**/*.ts",
-    "next-env.d.ts"
+    "next-env.d.ts",
+    "../../lib/**/*.ts",
+    "../../lib/type/model/*.ts"
   ],
   "exclude": [
     "out-tsc",

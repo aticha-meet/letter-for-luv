@@ -1,22 +1,31 @@
 import React, { useState } from 'react'
 import styles from './envelope.module.scss';
+import { LetterPopup } from './LetterPopup';
 
-export const Envelope = ({ isOpen, setIsOpen }
-    : {
-        isOpen: boolean;
-        setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-    }) => {
+// 💡 1. เพิ่มข้อกำหนดใน Interface ว่า Component นี้รับฟังก์ชันจากแม่ได้นะ
+interface EnvelopeProps {
+    isOpen: boolean;
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    onPaperClick?: (isExpanded: boolean) => void; // 👈 ฟังก์ชันส่งค่ากลับไปหน้าหลัก
+}
+
+export const Envelope = ({ isOpen, setIsOpen, onPaperClick }
+    : EnvelopeProps) => {
     const [isPaperClicked, setIsPaperClicked] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     const handlePaperClick = (e: React.MouseEvent) => {
         e.stopPropagation();  // ป้องกันอบจดหมาย
         setIsPaperClicked(!isPaperClicked);    // toggle
+        console.log(isExpanded)
+        if (isPaperClicked) {
+            const nextState = !isExpanded; // สลับสถานะ (true/false)
+            setIsExpanded(nextState);
+        }
     }
 
-    console.log("Paper Click",isPaperClicked)
-
     return (
-        <div className={`${styles.envelope} cursor-pointer rounded-2xl bg-rose-200 h-1/2 w-3/4 flex justify-center items-center ${isOpen ? `rounded-t-none` : ``}`}
+        <div className={`${styles.envelope} cursor-pointer rounded-2xl bg-rose-200 h-1/2 w-3/4 flex justify-center items-center ${isOpen ? `rounded-t-none` : `${styles.envelopeShake}`}`}
             onClick={() => setIsOpen(!isOpen)}>
 
             <div className={isOpen ? `${styles.flapAction} bg-rose-400 ` : `${styles.flap} rounded-2xl w-full h-2/3 bg-rose-400`}></div>
@@ -33,7 +42,14 @@ export const Envelope = ({ isOpen, setIsOpen }
             ${isOpen ? styles.paperOpen : ``}`}
                 onClick={handlePaperClick}>
                 Dear Noona.
+                <p className='font-shadows font-bold'>Happy Birth Day Moo.🐷</p>
+                <p className='font-shadows font-bold'>This web Happy Birth Day Card </p>
             </div>
+
+            <LetterPopup
+                isExpanded={isExpanded} // ใช้ State ตัวเดิมที่ได้มาจาก Envelope
+                onClose={() => setIsExpanded(false)} // ฟังก์ชันสำหรับกดปิด Popup
+            />
         </div>
     )
 }

@@ -9,9 +9,20 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 
+const ALLOW_ORIGIN_DOMAIN = [
+  'http://localhost:3000',
+  'https://outline-provided-sequence.ngrok-free.dev',
+  'https://outline-provided-sequence.ngrok-free.dev'
+]
+
 const app = express();
 app.use(morgan('dev'))
-app.use(cors());
+app.use(cors({
+  origin: function (origin: any, callback: any) {
+    if (!origin || ALLOW_ORIGIN_DOMAIN.includes(origin)) return callback(null, true)
+  },
+  credentials: true
+}));
 app.use(bodyParser.json())
 app.use(AppRouter);
 

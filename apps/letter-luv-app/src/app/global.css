@@ -2,6 +2,8 @@
 
 @theme {
     --font-bungee: var(--font-bungee);
+    --font-bitcount: var(--font-bitcount);
+    --font-shadows: "Shadows Into Light", cursive;
 }
 
 @layer base {
@@ -14,4 +16,34 @@
         height: 820px;
         width: 1180px;
     }
+}
+
+@keyframes scaleUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-scale-up {
+    animation: scaleUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
 }

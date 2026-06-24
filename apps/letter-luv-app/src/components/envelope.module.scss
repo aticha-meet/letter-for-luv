@@ -103,14 +103,86 @@
     justify-content: center;
 }
 
+/* สไตล์เดิมของคุณ */
 .paper {
     background-color: #FFFAF3;
     border-radius: 0.5rem;
     border: 0px solid #6b0000;
     z-index: 3;
-    transition: transform 1s ease-in-out;
+    /* 💡 เพิ่มคุณสมบัติที่เกี่ยวข้องกับการทรานสิชันให้ครอบคลุม */
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+        width 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+        height 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+        top 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+        left 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .paperOpen {
-    transform: translateY(-20px); // เลื่อนขึ้น 40px หลังจดหมายเปิดแล้ว
+    transform: translateY(-20px); // ดันขึ้นพ้นซองจดหมายเล็กน้อยตามสเต็ปแรก
+}
+
+/* 💡 สไตล์ใหม่: จังหวะระเบิดร่างขยายเป็น Popup A4 */
+.paperExpanded {
+    position: fixed;
+    /* สลัดหลุดจากกรอบของซองจดหมายทันที */
+    top: 50% !important;
+    left: 50% !important;
+
+    /* สัดส่วนตามโครงสร้างกระดาษ A4 (แนวตั้ง) บนหน้าจอ */
+    width: 90vw !important;
+    max-width: 450px !important;
+    /* คุมไม่ให้ใหญ่ล้นจอคอม */
+    height: 80vh !important;
+    max-height: 636px !important;
+    /* ล็อกสัดส่วน A4 */
+
+    /* ดึงกลับมาให้อยู่กึ่งกลางหน้าจอเป๊ะๆ และปลด translateY เก่าของซองจดหมาย */
+    transform: translate(-50%, -50%) !important;
+
+    z-index: 50;
+    /* ดีดตัวเองขึ้นมาอยู่เหนือกองซองจดหมายและหน้ากากดำ */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    /* เพิ่มเงาตกกระทบให้ดูมีมิติระดับ Popup */
+    cursor: default;
+
+    padding: 2rem !important;
+    /* เพิ่มพื้นที่เว้นวรรคขอบกระดาษภายใน */
+    overflow-y: auto;
+    /* หากเนื้อหาจดหมายยาวเกินหน้ากระดาษ A4 ให้เลื่อน Scroll อ่านได้ */
+}
+
+.envelopeShake {
+    animation: alertShake 4s ease-in-out infinite;
+    /* ยึด transform-origin ไว้ตรงกลางเพื่อให้เวลาสั่นมันเขย่าสมดุล */
+    transform-origin: center;
+}
+
+@keyframes alertShake {
+
+    /* ช่วง 0% ถึง 14% คือช่วงที่สั่งให้ซองจดหมายสะดุ้งสั่นซ้ายขวารัวๆ */
+    0%,
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    2%,
+    6%,
+    10% {
+        transform: rotate(-3deg) scale(1.02);
+        /* เอียงซ้ายพร้อมขยายจิ๊ดนึงให้ดูเด่น */
+    }
+
+    4%,
+    8%,
+    12% {
+        transform: rotate(3deg) scale(1.02);
+        /* เอียงขวา */
+    }
+
+    14% {
+        transform: rotate(0deg) scale(1);
+        /* กลับสู่นิ่งปกติ */
+    }
+
+    /* ช่วง 15% ถึง 100% ปล่อยว่างทิ้งไว้ให้มันหยุดนิ่ง เพื่อเว้นจังหวะให้ไม่รำคาญตาเกินไป */
 }
