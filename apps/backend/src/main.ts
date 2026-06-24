@@ -6,10 +6,11 @@
 import express from 'express';
 import AppRouter from './route';
 const cors = require('cors');
+const bodyParser = require('body-parser')
 
 const app = express();
 app.use(cors());
-
+app.use(bodyParser.json())
 app.use(AppRouter);
 
 // app.use('/assets', express.static(path.join(__dirname, 'assets')));
