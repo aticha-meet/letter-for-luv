@@ -57,3 +57,4 @@ test-output
 .env.local.*
 
 /generated/prisma
+assets/**
