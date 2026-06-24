@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "NodeNext", // <--- แก้ไขจุดนี้เป็น NodeNext
+    "moduleResolution": "NodeNext", // <--- ตรวจเช็กให้ตรงกัน
+    "outDir": "../../dist/apps/backend"
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts"
+  ]
+}
