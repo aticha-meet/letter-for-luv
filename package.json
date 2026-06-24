@@ -35,6 +35,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "babel-jest": "~30.3.0",
+    "dotenv": "^17.4.2",
     "eslint": "^9.8.0",
     "eslint-config-next": "^16.1.6",
     "eslint-config-prettier": "^10.0.0",
@@ -48,6 +49,7 @@
     "jest-util": "~30.3.0",
     "nx": "23.0.0",
     "prettier": "~3.6.2",
+    "prisma": "~6.16.3",
     "react-refresh": "^0.10.0",
     "sass": "1.97.2",
     "ts-jest": "^29.4.0",
@@ -64,6 +66,7 @@
     "apps/*"
   ],
   "dependencies": {
+    "@prisma/client": "~6.16.3",
     "axios": "^1.6.0",
     "body-parser": "^2.3.0",
     "cors": "^2.8.6",
