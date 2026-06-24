@@ -1,7 +1,8 @@
+import { UploadsRouter } from './pkg/uploads/route';
 import { PrismaClient } from "@prisma/client";
 import { Router, Request, Response } from "express";
-import { UploadsRouter } from "./uploads/route";
-import { ShowImageRouter } from "./show-image/route";
+import { ShowImageRouter } from "./pkg/show-image/route";
+import { ImageBGRouter } from './pkg/imageBg/route';
 
 const prisma = new PrismaClient();
 const AppRouter: Router = Router();
@@ -25,6 +26,7 @@ AppRouter.post('/test', async (req: Request, res: Response) => {
 })
 
 AppRouter.use(UploadsRouter)
+AppRouter.use(ImageBGRouter)
 AppRouter.use('/show-image', ShowImageRouter)
 
 export default AppRouter
