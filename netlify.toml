@@ -4,10 +4,10 @@ package = "@netlify/plugin-nextjs"
 
 [build]
 # ล็อกฐานที่มั่นไว้ที่นอกสุดของโปรเจกต์
-base = ""
+base = "apps/letter-luv-app"
 
 # ใช้ pnpm exec นำหน้าเพื่อให้ตามไปขุด nx ในเครื่องมาทำงานได้ทันที
-command = "pnpm exec nx build letter-luv-app"
+command = "pnpm run build"
 
 # ล็อกพิกัดผลลัพธ์โฟลเดอร์ฝั่งหน้าบ้านของ Next.js ตัวจริง
 publish = "../../apps/letter-luv-app/.next"
