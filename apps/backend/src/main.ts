@@ -11,18 +11,27 @@ const morgan = require('morgan')
 
 const ALLOW_ORIGIN_DOMAIN = [
   'http://localhost:3000',
-  'https://outline-provided-sequence.ngrok-free.dev',
-  'https://outline-provided-sequence.ngrok-free.dev'
+  'https://fronent-card-letter.netlify.app'
 ]
 
 const app = express();
 app.use(morgan('dev'))
+
 app.use(cors({
   origin: function (origin: any, callback: any) {
-    if (!origin || ALLOW_ORIGIN_DOMAIN.includes(origin)) return callback(null, true)
+    // ถ้ายิงมาจากเครื่องตัวเอง (ไม่มี origin) หรืออยู่ในลิสต์โดเมน ยอมให้ผ่าน
+    if (!origin || ALLOW_ORIGIN_DOMAIN.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      // ถ้ายิงมาจากโดเมนอื่นที่แปลกปลอม ส่ง Error ปฏิเสธกลับไป
+      callback(new Error('Not allowed by CORS'));
+    }
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning'] // 🎯 เปิดทางให้ header ของ ngrok ด้วย
 }));
+
 app.use(bodyParser.json())
 app.use(AppRouter);
 
