@@ -1,3 +1,6 @@
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
 [build]
 # Static files from this folder will be served at the root of the site.
 publish = "public"
