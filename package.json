@@ -6,6 +6,7 @@
   "private": true,
   "devDependencies": {
     "@eslint/js": "^9.8.0",
+    "@netlify/functions": "^1.4.0",
     "@netlify/plugin-nextjs": "^5.15.12",
     "@next/eslint-plugin-next": "^16.1.6",
     "@nx/devkit": "23.0.0",
@@ -14,6 +15,7 @@
     "@nx/express": "^23.0.1",
     "@nx/jest": "23.0.0",
     "@nx/js": "23.0.0",
+    "@nx/netlify": "^17.2.3",
     "@nx/next": "^23.0.0",
     "@nx/node": "23.0.1",
     "@nx/playwright": "23.0.0",
@@ -48,6 +50,7 @@
     "jest": "~30.3.0",
     "jest-environment-jsdom": "~30.3.0",
     "jest-util": "~30.3.0",
+    "netlify-cli": "13.2.1",
     "nx": "23.0.0",
     "prettier": "~3.6.2",
     "prisma": "~6.16.3",

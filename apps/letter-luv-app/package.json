@@ -6,5 +6,25 @@
     "next": "~16.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
+  },
+  "nx": {
+    "targets": {
+      "serve-functions": {
+        "command": "npx netlify dev"
+      },
+      "deploy-functions": {
+        "dependsOn": [],
+        "command": "npx netlify deploy",
+        "options": {
+          "cwd": "apps/letter-luv-app"
+        },
+        "configurations": {
+          "production": {
+            "command": "npx netlify deploy --prod",
+            "cwd": "apps/letter-luv-app"
+          }
+        }
+      }
+    }
   }
 }
