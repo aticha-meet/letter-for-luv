@@ -1,0 +1,2 @@
+/backend-images/* https://outline-provided-sequence.ngrok-free.dev/:splat  200!
+/api/* https://outline-provided-sequence.ngrok-free.dev/:splat  200!
