@@ -58,3 +58,6 @@ test-output
 
 /generated/prisma
 assets/**
+
+# Local Netlify folder
+# .netlify
