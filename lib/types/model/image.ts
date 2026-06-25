@@ -1,4 +1,5 @@
 export interface ImageType {
     imageId: number,
-    Thumbnail: string
+    Thumbnail: string,
+    thumbnail : string
 }

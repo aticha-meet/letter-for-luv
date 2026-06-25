@@ -12,7 +12,7 @@ export const distributeRandomImages = (
     }
 
     // 1. ดึงเฉพาะ Thumbnail และสับไพ่แบบสุ่ม
-    const allThumbnails = allImages.map((image) => image.Thumbnail);
+    const allThumbnails = allImages.map((image) => image.thumbnail);
     const shuffled = [...allThumbnails].sort(() => 0.5 - Math.random());
 
     const result: string[][] = [];
