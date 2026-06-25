@@ -10,7 +10,7 @@ base = ""
 command = "pnpm exec nx build letter-luv-app"
 
 # ล็อกพิกัดผลลัพธ์โฟลเดอร์ฝั่งหน้าบ้านของ Next.js ตัวจริง
-publish = "dist/apps/letter-luv-app/.next"
+publish = "../../../apps/letter-luv-app/.next"
 
 # [build.environment]
 # NODE_VERSION = "20"
