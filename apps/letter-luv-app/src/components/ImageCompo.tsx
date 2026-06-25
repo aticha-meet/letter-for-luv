@@ -22,6 +22,7 @@ export function PhotoItem({ item }: PhotoItemProps) {
                 sizes="100vh"
                 className="w-auto h-full object-cover"
                 unoptimized={true}
+                crossOrigin="anonymous"
             />
 
         </div>
