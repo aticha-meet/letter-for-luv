@@ -27,9 +27,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='' />
-      <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
       <body className={`${bungee.variable} ${bitcount.variable}`}>{children}</body>
     </html>
   );

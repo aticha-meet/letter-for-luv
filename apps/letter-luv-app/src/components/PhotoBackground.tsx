@@ -1,5 +1,4 @@
 "use client";
-import Image from 'next/image';
 import styles from './PhotoBackground.module.scss';
 import { PhotoItem } from './ImageCompo';
 
@@ -44,7 +43,7 @@ export const PhotoBackground = ({ direction, items }: MarqueeRowProps) => {
         );
     } else {
         {
-            Array.from({ length: COUNTITEM }).map((_, i) => (
+            return Array.from({ length: COUNTITEM }).map((_, i) => (
                 <div key={`placeholder-${i}`} className="text-white rounded-xl flex justify-center items-center text-center bg-black w-40 h-28">
                     No images to display
                 </div>

@@ -9,20 +9,21 @@ import { PhotoBackground } from '@/components/PhotoBackground';
 import { ImageType } from '@lib/types/model/image';
 import { distributeRandomImages } from '@/utils/distributeRandomImages';
 
+interface FetchImageType {
+    data: {
+        message: string,
+        data: ImageType[]
+    }
+}
 export default function Home() {
     const [isOpen, setIsOpen] = useState(false);
     const [imagesList, setImagesList] = useState<ImageType[]>([]);
     const [randomImages, setRandomImages] = useState<string[][]>([]);
-    const [isExpanded, setIsExpanded] = useState(false);
+    // const [isExpanded, setIsExpanded] = useState(false);
 
     const fetchImages = useCallback(async () => {
         try {
-            const respone: {
-                data: {
-                    message: string;
-                    data: ImageType[];
-                }
-            } = await getImages(IMAGE_PATH.BACKEND_URL)
+            const respone: FetchImageType = await getImages(IMAGE_PATH.BACKEND_URL) as FetchImageType
             setImagesList(respone.data.data)
             console.log(respone.data.data)
             if (imagesList.length > 0) {
@@ -30,7 +31,7 @@ export default function Home() {
                 setRandomImages(distributed)
             }
             console.log(randomImages)
-        } catch (err) {
+        } catch (err: unknown) {
             console.log(err);
             return Promise.reject(err);
         }
@@ -69,8 +70,8 @@ export default function Home() {
             </div>
             {/* Envelope */}
             <div className={`flex items-center justify-center w-[60%] h-[80%] 
-            ${isOpen ? styles.paperOpen : ''} 
-                        ${isExpanded ? styles.paperExpanded : ''}`}>
+            ${isOpen ? styles.paperOpen : ''}
+                        `}>
                 <Envelope isOpen={isOpen} setIsOpen={setIsOpen} />
             </div>
         </main>
